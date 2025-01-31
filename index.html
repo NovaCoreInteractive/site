@@ -90,21 +90,20 @@
         .cyber-savvy-section {
             text-align: center;
             padding: 50px 20px;
-            background: #111;
+            background: linear-gradient(45deg, #000, #111);
+        }
+
+        .cyber-savvy-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
 
         .cyber-savvy-section img {
             width: 100%;
-            height: auto;
-            max-width: 640px;
+            max-width: 800px;
             border-radius: 10px;
             animation: breathing 3s infinite alternate;
-        }
-
-        .coming-soon {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #ff007f;
         }
 
         .beta-section {
@@ -152,6 +151,36 @@
             opacity: 0.8;
         }
 
+        /* YouTube Subscribe Button */
+        .youtube-button {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .youtube-button a {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 30px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: #ff0000;
+            color: #fff;
+            border-radius: 50px;
+            box-shadow: 0 0 20px #ff007f, 0 0 40px #00eaff;
+            text-decoration: none;
+            animation: breathing 3s infinite alternate;
+        }
+
+        .youtube-button a:hover {
+            opacity: 0.9;
+        }
+
+        .youtube-button img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
         .footer {
             text-align: center;
             padding: 20px;
@@ -161,43 +190,12 @@
             font-size: 1rem;
         }
     </style>
-    <script>
-        document.addEventListener('keydown', (e) => {
-            const playButton = document.querySelector('.play-button a');
-            if (e.key === 'Enter' && playButton) {
-                playButton.click();
-            }
-        });
-
-        document.addEventListener('gamepadconnected', (event) => {
-            console.log('Gamepad connected: ', event.gamepad);
-            const playButton = document.querySelector('.play-button a');
-            if (playButton) {
-                playButton.addEventListener('click', () => {
-                    alert('Controller support activated.');
-                });
-            }
-        });
-
-        // For TV Remote (basic key handling for arrow keys)
-        document.addEventListener('keydown', (e) => {
-            const focusable = document.querySelectorAll('a, button');
-            let index = Array.from(focusable).findIndex((el) => el === document.activeElement);
-            if (e.key === 'ArrowDown') {
-                index = (index + 1) % focusable.length;
-                focusable[index].focus();
-            } else if (e.key === 'ArrowUp') {
-                index = (index - 1 + focusable.length) % focusable.length;
-                focusable[index].focus();
-            }
-        });
-    </script>
 </head>
 <body>
 
     <!-- Header -->
     <header class="header">
-        <img src="logo.webp" alt="NovaCore Interactive Logo">
+        <img src="logo.png" alt="NovaCore Interactive Logo">
         <h1>NOVA CORE INTERACTIVE</h1>
     </header>
 
@@ -213,15 +211,11 @@
         <p>NovaCore Interactive is a dynamic indie game development studio founded with a passion for delivering immersive gaming experiences. As a solo developer, the mission is to create unique, engaging, and innovative games that cater to players' creativity and style. Welcome to the next generation of independent gaming.</p>
     </section>
 
-    <!-- Cyber Savvy 2099 Section -->
+    <!-- Cyber Savvy Section -->
     <section class="cyber-savvy-section">
-        <h2>Cyber Savvy 2099 - Coming later</h2>
+        <h2>Cyber Savvy 2099</h2>
         <img src="cs.png" alt="Cyber Savvy 2099 Thumbnail">
-        <p><strong>Cyber Savvy 2099</strong> is a dynamic open-world cyberpunk city simulator designed exclusively for Android. Immerse yourself in a futuristic metropolis filled with AI-driven NPCs, drivable vehicles, and an intelligent police system. Experience the thrill of unrestricted exploration as you navigate the neon-lit streets, interact with the city’s advanced AI, and enjoy a high-tech urban playground. With stunning visuals and smooth gameplay, Cyber Savvy 2099 brings the cyberpunk experience to mobile like never before.</p>
-        <p><strong>Available on:</strong> Android (More platforms in the future)</p>
-        <div class="coming-soon">
-            <p><strong>Comming later  - on google play store</strong></p>
-        </div>
+        <p><strong>Cyber Savvy 2099</strong> is an open-world cyberpunk game that lets you roam freely across a futuristic city. Currently in development for Android. Stay tuned for its release!</p>
     </section>
 
     <!-- Beta Games Section -->
@@ -233,6 +227,14 @@
         <div class="play-button">
             <a href="http://flyingpixelgame.42web.io/" target="_blank">Play Beta</a>
         </div>
+    </section>
+
+    <!-- YouTube Subscribe Button -->
+    <section class="youtube-button">
+        <a href="https://youtube.com/@novacoreinteractive?si=goCpGQkuxnr-2qiZ" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo">
+            Subscribe to our YouTube Channel
+        </a>
     </section>
 
     <!-- Footer -->
