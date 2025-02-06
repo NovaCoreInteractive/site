@@ -5,205 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaCore Interactive</title>
     <style>
-        /* General Styles */
-        body {
-            background: linear-gradient(135deg, #1a1a1a, #333);
-            color: #fff;
-            font-family: 'Helvetica Now', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Header Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #111;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Transition Effect */
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+
+        /* Header */
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background: #000;
-            border-bottom: 1px solid #444;
+            justify-content: center;
+            background-color: #000;
+            padding: 20px 0;
+            border-bottom: 2px solid #444;
         }
 
-        header .logo img {
-            width: 150px;
+        header img {
+            width: 50px;
+            margin-right: 20px;
         }
 
-        header nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
+        header h1 {
+            font-size: 2rem;
             font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
         }
 
         /* Hero Section */
         .hero {
-            background: url('hero-image.jpg') no-repeat center center/cover;
-            color: #fff;
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
+            background: linear-gradient(145deg, #1b1b1b, #333);
+            color: #fff;
+            font-size: 2rem;
         }
 
         .hero h1 {
             font-size: 3rem;
-            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            font-style: italic;
         }
 
-        .cta-button {
-            background: #ff007f;
+        /* Section Titles */
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin: 20px 0;
             color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.25rem;
-            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         /* About Section */
         .about {
-            display: flex;
-            justify-content: space-between;
-            padding: 50px 20px;
-            background: #111;
-        }
-
-        .about .text {
-            width: 48%;
-        }
-
-        .about .image {
-            width: 48%;
-        }
-
-        .about h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            padding: 60px 20px;
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
         }
 
         .about p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .about img {
-            width: 100%;
-            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Cyber Savvy Section */
         .cyber-savvy-section {
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #111, #222);
             text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(45deg, #000, #111);
-        }
-
-        .cyber-savvy-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
         }
 
         .cyber-savvy-section img {
             width: 100%;
-            max-width: 800px;
+            max-width: 700px;
             border-radius: 10px;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
         }
 
-        .cyber-savvy-section p {
-            font-size: 1rem;
-            color: #ccc;
+        .cyber-savvy-section img:hover {
+            transform: scale(1.05);
         }
 
-        /* Beta Section */
+        /* Beta Games Section */
         .beta-section {
+            padding: 60px 20px;
+            background: #222;
             text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(45deg, #000, #111);
-        }
-
-        .beta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
         }
 
         .beta-section img {
             width: 100%;
             max-width: 640px;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .beta-section p {
-            margin-top: 20px;
-            font-size: 1rem;
-        }
-
-        .play-button a {
+        /* Button Styles */
+        .cta-button {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-            background: linear-gradient(45deg, #ff007f, #00eaff);
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        /* YouTube Subscribe Button */
-        .youtube-button {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .youtube-button a {
-            display: inline-flex;
-            align-items: center;
+            background: #ff007f;
             padding: 15px 30px;
-            font-size: 1.25rem;
-            font-weight: bold;
             color: #fff;
-            background: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.8), 0 0 30px rgba(0, 234, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #00eaff;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 1), 0 0 50px rgba(0, 234, 255, 1);
+        }
+
+        /* YouTube Button */
+        .youtube-button a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            padding: 15px 30px;
+            color: #fff;
+            text-decoration: none;
             border: 2px solid #ff007f;
             border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
             box-shadow: 0 0 20px #ff007f, 0 0 40px #00eaff;
-            text-decoration: none;
-            position: relative;
+            margin-top: 30px;
+            transition: all 0.3s ease;
         }
 
         .youtube-button a:hover {
-            opacity: 0.9;
             box-shadow: 0 0 30px #ff007f, 0 0 50px #00eaff;
         }
 
         .youtube-button img {
-            width: 30px;
-            height: 30px;
+            width: 25px;
             margin-right: 10px;
         }
 
-        /* Footer Styles */
+        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
             background: #000;
             color: #fff;
-            border-top: 1px solid #444;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .about {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about .text, .about .image {
-                width: 100%;
-                text-align: center;
-            }
+            border-top: 2px solid #444;
         }
     </style>
 </head>
@@ -211,39 +181,27 @@
 
     <!-- Header -->
     <header>
-        <div class="logo">
-            <img src="logo.webp" alt="NovaCore Interactive Logo">
-        </div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <img src="logo.webp" alt="NovaCore Interactive Logo">
+        <h1>NOVA CORE INTERACTIVE</h1>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to NovaCore Interactive</h1>
-        <p>Innovative Gaming Experiences Await</p>
-        <a href="#games" class="cta-button">Explore Our Games</a>
+        <p>Where the future of gaming begins</p>
     </section>
 
     <!-- About Section -->
     <section class="about">
-        <div class="text">
-            <h2>About NovaCore Interactive</h2>
-            <p>We are a dynamic indie game development studio dedicated to creating immersive gaming experiences.</p>
-        </div>
-        <div class="image">
-            <img src="about-image.jpg" alt="About NovaCore Interactive">
-        </div>
+        <h2>About NovaCore Interactive</h2>
+        <p>NovaCore Interactive is a cutting-edge indie game development studio that blends immersive storytelling with next-gen technology. Our mission is to bring you games that break boundaries and redefine the way you experience interactive worlds.</p>
     </section>
 
     <!-- Cyber Savvy Section -->
     <section class="cyber-savvy-section">
         <h2>Cyber Savvy 2099</h2>
-        <img src="cs.png" alt="Cyber Savvy 2099 Thumbnail">
-        <p><strong>Cyber Savvy 2099</strong> is an open-world cyberpunk game that lets you roam freely across a futuristic city. Currently in development for Android. Stay tuned for its release!</p>
+        <img src="cs.png" alt="Cyber Savvy 2099">
+        <p><strong>Cyber Savvy 2099</strong> is an open-world cyberpunk game currently in development for Android. Stay tuned for the release!</p>
     </section>
 
     <!-- Beta Games Section -->
@@ -251,10 +209,8 @@
         <h2>BETA Games - Play Online Now</h2>
         <h3>Flying Pixel</h3>
         <img src="flyingpixel.png" alt="Flying Pixel Thumbnail">
-        <p><strong>Flying Pixel</strong> is the hardest game in history. It's nearly impossible to score 200 points in this challenging and thrilling experience. Are you up for the challenge?</p>
-        <div class="play-button">
-            <a href="http://flyingpixelgame.42web.io/" target="_blank">Play Beta</a>
-        </div>
+        <p><strong>Flying Pixel</strong> is the hardest game in history. Are you up for the challenge?</p>
+        <a class="cta-button" href="http://flyingpixelgame.42web.io/" target="_blank">Play Beta</a>
     </section>
 
     <!-- YouTube Subscribe Button -->
