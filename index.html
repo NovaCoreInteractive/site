@@ -5,90 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaCore Interactive</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: #121212;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Breathing RGB Animation */
-        @keyframes breathing {
-            0% { box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #00eaff; }
-            50% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #00eaff, 0 0 60px #ff007f; }
-            100% { box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #00eaff; }
-        }
-
         /* General Styles */
-        h1, h2, p {
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: #fff;
+            font-family: 'Helvetica Now', sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Header */
+        /* Header Styles */
         header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            padding: 20px 0;
-            background: #1c1c1c;
-            border-bottom: 2px solid #333;
+            padding: 20px;
+            background: #000;
+            border-bottom: 1px solid #444;
         }
 
-        header img {
-            width: 40px;
-            margin-right: 10px;
-            animation: breathing 2s infinite alternate;
+        header .logo img {
+            width: 150px;
         }
 
-        header h1 {
-            font-size: 2rem;
-            font-weight: bold;
+        header nav a {
             color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 120px 20px;
-            background: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(20,20,20,1) 100%);
+            background: url('hero-image.jpg') no-repeat center center/cover;
             color: #fff;
-            font-size: 2rem;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 100px 20px;
         }
 
         .hero h1 {
             font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .hero p {
             font-size: 1.5rem;
-            margin-top: 10px;
-            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: #ff007f;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            font-weight: bold;
         }
 
         /* About Section */
         .about {
+            display: flex;
+            justify-content: space-between;
             padding: 50px 20px;
-            text-align: center;
             background: #111;
         }
 
+        .about .text {
+            width: 48%;
+        }
+
+        .about .image {
+            width: 48%;
+        }
+
         .about h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
 
         .about p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
             color: #ccc;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 10px;
         }
 
         /* Cyber Savvy Section */
@@ -99,16 +103,19 @@
         }
 
         .cyber-savvy-section h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
 
         .cyber-savvy-section img {
             width: 100%;
             max-width: 800px;
             border-radius: 10px;
-            animation: breathing 3s infinite alternate;
+        }
+
+        .cyber-savvy-section p {
+            font-size: 1rem;
+            color: #ccc;
         }
 
         /* Beta Section */
@@ -119,43 +126,30 @@
         }
 
         .beta-section h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
 
         .beta-section img {
             width: 100%;
             max-width: 640px;
             border-radius: 10px;
-            animation: breathing 3s infinite alternate;
         }
 
         .beta-section p {
             margin-top: 20px;
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-
-        .play-button {
-            margin-top: 20px;
+            font-size: 1rem;
         }
 
         .play-button a {
             display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 10px 20px;
+            font-size: 1rem;
             font-weight: bold;
             color: #fff;
             background: linear-gradient(45deg, #ff007f, #00eaff);
             text-decoration: none;
             border-radius: 5px;
-            box-shadow: 0 0 10px #ff007f;
-            animation: breathing 2s infinite alternate;
-        }
-
-        .play-button a:hover {
-            opacity: 0.8;
         }
 
         /* YouTube Subscribe Button */
@@ -177,7 +171,6 @@
             box-shadow: 0 0 20px #ff007f, 0 0 40px #00eaff;
             text-decoration: none;
             position: relative;
-            animation: breathing 3s infinite alternate;
         }
 
         .youtube-button a:hover {
@@ -191,14 +184,26 @@
             margin-right: 10px;
         }
 
-        /* Footer */
-        .footer {
+        /* Footer Styles */
+        footer {
             text-align: center;
             padding: 20px;
             background: #000;
             color: #fff;
-            border-top: 2px solid #333;
-            font-size: 1rem;
+            border-top: 1px solid #444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about .text, .about .image {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -206,20 +211,32 @@
 
     <!-- Header -->
     <header>
-        <img src="logo.png" alt="NovaCore Interactive Logo">
-        <h1>NOVA CORE INTERACTIVE</h1>
+        <div class="logo">
+            <img src="logo.webp" alt="NovaCore Interactive Logo">
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to NovaCore Interactive</h1>
-        <p>Play with Style</p>
+        <p>Innovative Gaming Experiences Await</p>
+        <a href="#games" class="cta-button">Explore Our Games</a>
     </section>
 
     <!-- About Section -->
     <section class="about">
-        <h2>About NovaCore Interactive</h2>
-        <p>NovaCore Interactive is a dynamic indie game development studio founded with a passion for delivering immersive gaming experiences. As a solo developer, the mission is to create unique, engaging, and innovative games that cater to players' creativity and style. Welcome to the next generation of independent gaming.</p>
+        <div class="text">
+            <h2>About NovaCore Interactive</h2>
+            <p>We are a dynamic indie game development studio dedicated to creating immersive gaming experiences.</p>
+        </div>
+        <div class="image">
+            <img src="about-image.jpg" alt="About NovaCore Interactive">
+        </div>
     </section>
 
     <!-- Cyber Savvy Section -->
@@ -249,8 +266,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>© NovaCore Interactive</p>
+    <footer>
+        <p>© 2025 NovaCore Interactive</p>
     </footer>
 
 </body>
