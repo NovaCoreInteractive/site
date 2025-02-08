@@ -1,159 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaCore Interactive</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap">
-    <style>
-        /* General Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        body {
-            background: #0a0a0a;
-            color: white;
-            text-align: center;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaCore Interactive</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        }
+    /* Preloader using Tricky Turtle */
+    .preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+    .tricky-turtle {
+      width: 80px;
+      height: 80px;
+      border: 5px solid #3498db; /* Blue border for contrast */
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
-        .logo img {
-            height: 50px;
-        }
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #1f1f1f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .navbar .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #fff;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      color: #e0e0e0;
+      font-size: 1em;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #3498db;
+    }
 
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 60px; /* leave room for navbar */
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+    /* Brave Mole Button */
+    .brave-mole {
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s ease, background 0.3s ease;
+      margin: 5px;
+    }
+    .brave-mole:hover {
+      transform: scale(1.1);
+      background: #2980b9;
+    }
 
-        .nav a {
-            text-decoration: none;
-            color: #bbb;
-            font-size: 18px;
-            transition: 0.3s;
-        }
+    /* Section Base Styles */
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
 
-        .nav a:hover {
-            color: #fff;
-        }
+    /* How It Works Section */
+    #how-it-works {
+      background: #181818;
+    }
+    #how-it-works h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .feature {
+      background: #222;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .feature h3 {
+      margin-bottom: 15px;
+    }
 
-        /* Sparkle Buttons */
-        .sparkle-button {
-            --active: 0;
-            --bg: radial-gradient(40% 50% at center 100%, hsl(270 calc(var(--active) * 97%) 72% / var(--active)), transparent),
-                  radial-gradient(80% 100% at center 120%, hsl(260 calc(var(--active) * 97%) 70% / var(--active)), transparent),
-                  hsl(260 calc(var(--active) * 97%) calc((var(--active) * 44%) + 12%));
-            background: var(--bg);
-            font-size: 1.2rem;
-            font-weight: 500;
-            border: 0;
-            cursor: pointer;
-            padding: 1em 1em;
-            display: flex;
-            align-items: center;
-            gap: 0.25em;
-            white-space: nowrap;
-            border-radius: 100px;
-            position: relative;
-            box-shadow: 0 0 calc(var(--active) * 3em) calc(var(--active) * 1em) hsl(260 97% 61% / 0.75),
-                        0 0em 0 0 hsl(260 calc(var(--active) * 97%) calc((var(--active) * 50%) + 30%)) inset,
-                        0 -0.05em 0 0 hsl(260 calc(var(--active) * 97%) calc(var(--active) * 60%)) inset;
-            transition: box-shadow 0.3s, scale 0.3s, background 0.3s;
-            scale: calc(1 + (var(--active) * 0.1));
-        }
+    /* Showcase Section */
+    #showcase {
+      background: #121212;
+    }
+    #showcase h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .project-card {
+      background: #1f1f1f;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      font-size: 0.9em;
+    }
 
-        .sparkle-button:hover {
-            --active: 1;
-        }
+    /* Testimonials Section */
+    #testimonials {
+      background: #181818;
+    }
+    #testimonials h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .testimonial {
+      background: #222;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      font-style: italic;
+    }
 
-        .sparkle-button:active {
-            scale: 1;
-        }
+    /* Contact Section */
+    #contact {
+      background: #121212;
+    }
+    #contact h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: #222;
+      border: none;
+      border-radius: 5px;
+      color: #e0e0e0;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
 
-        /* Main Section */
-        .main {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    /* Footer */
+    footer {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      color: #a0a0a0;
+    }
+    footer a {
+      color: #3498db;
+      margin: 0 10px;
+      font-size: 0.9em;
+    }
 
-        .main h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff00ff, #007bff);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .main p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            opacity: 0.7;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 20px;
-            text-align: center;
-            opacity: 0.6;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-
-    </style>
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .features,
+      .projects,
+      .testimonials-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar {
+        flex-direction: column;
+      }
+      .nav-links {
+        margin-top: 10px;
+        flex-direction: column;
+      }
+      .nav-links li {
+        margin: 5px 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="tricky-turtle"></div>
+  </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            <img src="logo.webp" alt="NovaCore Interactive">
-        </div>
-        <nav class="nav">
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">NovaCore Interactive</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#showcase">Showcase</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- Main Content -->
-    <section class="main fade-in">
-        <h1>Welcome to NovaCore Interactive</h1>
-        <p>Bringing the future of gaming and AI development to life.</p>
-        <br>
-        <button class="sparkle-button">Explore Now</button>
-    </section>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <h1>Welcome to NovaCore Interactive</h1>
+    <p>
+      Where innovation meets creativity. Explore our cutting-edge games and AI-powered apps designed for the future.
+    </p>
+    <div>
+      <button class="brave-mole">Learn More</button>
+      <button class="brave-mole">Get Started</button>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2025 NovaCore Interactive. All rights reserved.</p>
-    </footer>
+  <!-- How It Works Section -->
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Games Development</h3>
+        <p>
+          From concept to creation, we bring innovative games to life with stunning graphics and engaging gameplay.
+        </p>
+      </div>
+      <div class="feature">
+        <h3>AI-Powered Apps</h3>
+        <p>
+          Leveraging the latest in AI technology to deliver intuitive and powerful applications.
+        </p>
+      </div>
+      <div class="feature">
+        <h3>Tech Solutions</h3>
+        <p>
+          We provide end-to-end tech solutions that drive digital transformation and elevate user experiences.
+        </p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Showcase Section -->
+  <section id="showcase">
+    <h2>Our Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>A groundbreaking game that redefines interactive storytelling.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>An AI-powered app that revolutionizes daily productivity.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Innovative tech solutions tailored to modern challenges.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials-container">
+      <div class="testimonial">
+        "NovaCore Interactive transformed our digital strategy with their innovative solutions. Highly recommended!"
+        <br /><strong>- Client A</strong>
+      </div>
+      <div class="testimonial">
+        "A seamless blend of creativity and technology. Their work on our game was phenomenal."
+        <br /><strong>- Client B</strong>
+      </div>
+      <div class="testimonial">
+        "The AI-powered apps developed by NovaCore have taken our business to the next level."
+        <br /><strong>- Client C</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="brave-mole">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 NovaCore Interactive. All Rights Reserved.</p>
+    <p>
+      <a href="#about">About</a> |
+      <a href="#contact">Contact</a> |
+      <a href="#privacy">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    // Hide the preloader after page load
+    window.addEventListener('load', function () {
+      const preloader = document.querySelector('.preloader');
+      preloader.style.opacity = '0';
+      setTimeout(function () {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+  </script>
 </body>
 </html>
